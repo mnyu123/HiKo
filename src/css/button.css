@@ -1,0 +1,28 @@
+.level-buttons {
+    display: flex;
+    flex-direction: row; 
+    margin-top: 20px;
+    border: 2px solid rgb(196, 13, 77);
+    
+  }
+  
+  .level-button {
+    width: 150px;
+    height: 50px;
+    background-color: #007bff; 
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 50px;
+    margin-right: 10px; 
+    cursor: pointer;
+    font-family: 'Yeon Sung', cursive;
+  }
+  
+  .level-button:last-child {
+    margin-right: 0; 
+  }
+  
+  .level-button:hover {
+    background-color: #0056b3; 
+  }

@@ -1,7 +1,7 @@
-import "../css/End.css";
+import "../css/end.css";
 
 export default function End() {
-    console.log("리액트 컴포넌트가 잘 연결되었습니다.");
+  console.log("리액트 컴포넌트가 잘 연결되었습니다.");
   return (
     <body>
       <div class="result-message">게임이 종료되었습니다.</div>
