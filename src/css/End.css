@@ -18,13 +18,3 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-.home-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-}

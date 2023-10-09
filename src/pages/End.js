@@ -1,4 +1,5 @@
 import "../css/end.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function End() {
   console.log("리액트 컴포넌트가 잘 연결되었습니다.");
@@ -8,9 +9,7 @@ export default function End() {
       <div class="score">
         당신이 맞춘 개수는 <span id="score">?/10</span> 입니다.
       </div>
-      <button class="home-button" onclick="goHome()">
-        홈으로
-      </button>
+      <Link to="/">첫페이지 이동</Link>
     </body>
   );
 }

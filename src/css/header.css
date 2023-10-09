@@ -4,3 +4,10 @@
     margin: 0;
     border: 1px solid red;
   }
+
+  .game-title {
+    font-size: 24px;
+    margin-top: 20px;
+    border: 2px solid rgb(58, 8, 243);
+  }
+  

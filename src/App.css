@@ -9,16 +9,3 @@ body {
   border: 2px solid rgb(11, 235, 75);
   font-family: 'Yeon Sung', cursive;
 }
-
-.logo {
-  width: 100px; 
-  height: 100px;  
-  background-size: cover;
-}
-
-.game-title {
-  font-size: 24px;
-  margin-top: 20px;
-  border: 2px solid rgb(58, 8, 243);
-}
-
