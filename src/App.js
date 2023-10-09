@@ -1,5 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Route , Routes } from "react-router-dom";
+import End from "./pages/End"
+
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
           <button class="level-button" onclick="selectLevel(2)">
             레벨 2
           </button>
+          <Routes>
+          <Route path="/end" element={<End/>} />
+          </Routes>
         </div>
       </div>
     </body>
