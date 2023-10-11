@@ -5,6 +5,7 @@
     /* 아이템들을 수평 가운데 정렬합니다. */
     background-color: #8B4513;
     /* 배경색을 짙은 갈색으로 설정. 일명 책상 색깔 */
+    display: inline-block;
 }
 
 .question-number,
@@ -21,6 +22,7 @@
     /* 너비를 부모 요소의 100%로 설정합니다. */
     margin-top: 10px;
     /* 위쪽 여백을 10px로 설정합니다. */
+    border : 5px solid #000000;
 }
 
 .question-container {
@@ -69,6 +71,7 @@
     /* 아이템들을 수평 가운데 정렬합니다. */
     width: 100%;
     /* 너비를 부모 요소의 100%로 설정합니다. */
+    border : 5px solid #eae612;
 }
 
 .answers p {
@@ -80,7 +83,7 @@
     /* 1px 두께의 연한 회색 테두리를 적용합니다. */
     flex: 1;
     /* Flex 아이템이 동일한 너비를 가지도록 설정합니다. */
-    margin: 0 55px;
+    margin: 0 5px;
     /* 좌우 여백을 0 위아래 여백을 55px로 설정합니다. */
     text-align: center;
     /* 텍스트를 가운데 정렬합니다. */
@@ -93,21 +96,27 @@
     /* 내부 여백을 위아래 10px, 좌우 10px로 설정합니다. */
     border: 1px solid #ccc;
     /* 1px 두께의 연한 회색 테두리를 적용합니다. */
-    flex: 1;
+    flex: 0;
     /* Flex 아이템이 동일한 너비를 가지도록 설정합니다. */
-    margin: 0 70px;
+
     /* 좌우 여백을 0 위아래 여백을 70px로 설정합니다. */
     text-align: center;
     /* 텍스트를 가운데 정렬합니다. */
     color: black;
     /* 텍스트 색상을 검은색으로 설정합니다. */
-    margin: 10px 70px;
+    margin: 10px 40px;
     /* 오른쪽 여백을 70px로 설정합니다. (앞서의 margin 속성은 무시됨) */
+    border : 5px solid #3817de;
 }
 
 .answer-input{
     padding: 10px;
-    margin-top: 10px; /* 사용자 입력 요소와 상단 간격 추가 */
+    margin-top: 20px; /* 사용자 입력 요소와 상단 간격 추가 */
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 260px;
+    height: 250px;
+    border : 5px solid #db0808;
 }
 
 button {
@@ -123,6 +132,7 @@ button {
     /* 테두리를 없앱니다. */
     cursor: pointer;
     /* 커서 모양을 포인터로 변경하여 버튼임을 나타냅니다. */
+    border : 5px solid #bd0ffd;
 }
 
 button:hover {
@@ -130,7 +140,7 @@ button:hover {
     /* 마우스 호버 시 배경색을 더 진한 파란색으로 변경합니다. */
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .container {
         padding: 5px;
     }
@@ -163,5 +173,50 @@ button:hover {
 
     .answer-input {
         margin-top: 15px; 
+        margin-left: 0px;
+        width: 80%;
+        font-size: 22px;
+    }
+
+    
+}
+
+/* 위 아래로 줄였을때도 적용 */
+@media screen and (max-height: 800px) {
+    .container {
+        padding: 5px;
+    }
+
+    .question-number,
+    .question-content {
+        margin-top: 15px;
+    }
+
+    .question-container {
+        margin: 5px 1;
+    }
+
+    .time-left {
+        margin-top: 5px;
+        margin: 10px auto;
+    }
+
+    .answers p,
+    .btn-answer {
+        flex: 0 1 calc(50% - 1px);
+        margin: 5px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .answer-input {
+        margin-top: 15px;
+        margin-left: 0;
+        width: 80%;
+        font-size: 22px;
     }
 }

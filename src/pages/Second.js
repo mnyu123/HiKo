@@ -5,7 +5,6 @@ import "../css/second.css"; // second.css 파일을 가져옵니다.
 import CustomProgressBar from "../common/Progressbar";
 
 export default function Second() {
-
   // 재할당(변수 내용 다시 바꾸는거)이 불가능한 변수 const 생성
   // currentQuestion: 현재 문제 번호
   // setCurrentQuestion: 현재 문제 번호를 변경하는 함수
@@ -67,12 +66,12 @@ export default function Second() {
 
   // 만약 문제를 다 풀거나 1번문제 이전으로 돌아가려고 하면
   const showAlertMessage1 = () => {
-    alert('이것이 첫번째 문제입니다!');
+    alert("이것이 첫번째 문제입니다!");
   };
 
   // 마지막 문제를 만나고 정답을 체크했을때
   const showAlertMessage2 = () => {
-    alert('이것이 마지막 문제입니다!');
+    alert("이것이 마지막 문제입니다!");
   };
 
   // 다음 문제로 넘어가는 함수
@@ -81,8 +80,7 @@ export default function Second() {
       setCurrentQuestion(currentQuestion + 1);
       setProgress(0); // ProgressBar 초기화
       setTimeLeft(300); // 카운트다운 초기화
-    }
-    else{
+    } else {
       // 마지막 문제입니다 출력 후 다음 컴포넌트로 이동 예정
       showAlertMessage2();
     }
@@ -94,8 +92,7 @@ export default function Second() {
       setCurrentQuestion(currentQuestion - 1);
       setProgress(0); // ProgressBar 초기화
       setTimeLeft(300); // 카운트다운 초기화
-    }
-    else{
+    } else {
       // 첫번째 문제임을 알려줌
       showAlertMessage1();
     }
@@ -116,6 +113,33 @@ export default function Second() {
     // 만약 모든 문제를 푸는 동작을 추가하고자 한다면 여기에서 처리할 수 있습니다.
   };
 
+  // 타이핑 효과 컴포넌트
+  const TypingTitle = ({ content }) => {
+    const [typedContent, setTypedContent] = useState("");
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      let typingInterval;
+
+      const typeNextCharacter = () => {
+        if (count < content.length) {
+          setTypedContent((prevContent) => prevContent + content[count]);
+          setCount(count + 1);
+        } else {
+          clearInterval(typingInterval); // 타이핑 완료 후 clearInterval
+        }
+      };
+
+      typingInterval = setInterval(typeNextCharacter, 100); // 타이핑 속도 조절 가능
+
+      return () => {
+        clearInterval(typingInterval);
+      };
+    }, [content, count]);
+
+    return <div>{typedContent}</div>;
+  };
+
   return (
     <body>
       <Header />
@@ -129,9 +153,8 @@ export default function Second() {
             questions[currentQuestion - 1].number
           } 문제`}</div>
           <div className="question-content">
-            {/* 문제 낼 단어들도 한개씩 불러서 온다 */}
-            {`${questions[currentQuestion - 1].content} 
-            의 뜻은?`}
+            <TypingTitle content={questions[currentQuestion - 1].content} />의
+            뜻은?
           </div>
         </div>
         {/* 부트 스트랩 프로그레스 바 사용 | math.round는 정수로 계산이고 */}
@@ -143,7 +166,7 @@ export default function Second() {
         {/* 여기는 정답을 고르는 선택 버튼들 */}
         {/* API가 도입되면 여기도 변수를 받아들이는 구조로 변경되어야 할것. */}
         <div className="answers">
-        <input
+          <input
             className="answer-input"
             type="text"
             value={answer}
@@ -151,7 +174,10 @@ export default function Second() {
             placeholder="답변을 입력하세요"
           />
           <button onClick={submitAnswer} className="btn-answer">
-          ↵
+            ↵
+          </button>
+          <button onClick={nextQuestion} className="btn-answer">
+            다음 문제
           </button>
           <button onClick={prevQuestion} className="btn-answer">
             이전 문제
