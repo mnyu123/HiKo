@@ -6,7 +6,7 @@ body {
   height: 100vh;
   margin: 0;
   background-color: #f0f0f0;
-  border: 2px solid rgb(11, 235, 75);
   font-family: 'Yeon Sung', cursive;
   font-size: 30px;
+  background-color: #008000;
 }

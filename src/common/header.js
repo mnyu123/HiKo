@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className="mw">
       <h1>
-        순우리말 끄투
+        히코
       </h1>
       <nav>
         <Link to="/end">마지막페이지</Link>
