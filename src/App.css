@@ -7,6 +7,6 @@ body {
   margin: 0;
   background-color: #f0f0f0;
   font-family: 'Yeon Sung', cursive;
-  font-size: 30px;
-  background-color: #008000;
+  font-size: 40px !important;
+  background-color: #008000 !important;
 }
