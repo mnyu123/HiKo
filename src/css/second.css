@@ -1,88 +1,126 @@
 .container {
     flex-direction: column;
+    /* Flex 컨테이너의 아이템들을 세로로 정렬합니다. */
     align-items: center;
+    /* 아이템들을 수평 가운데 정렬합니다. */
     background-color: #8B4513;
+    /* 배경색을 짙은 갈색으로 설정. 일명 책상 색깔 */
 }
-
-
 
 .question-number,
 .question-content {
     background-color: #fff;
-    /* 흰색 배경 */
+    /* 배경색을 흰색으로 설정합니다. */
     padding: 10px;
+    /* 내부 여백을 위아래 10px, 좌우 10px로 설정합니다. */
     border: 1px solid #ddd;
+    /* 1px 두께의 회색 테두리를 적용합니다. */
     text-align: center;
+    /* 텍스트를 가운데 정렬합니다. */
     width: 100%;
+    /* 너비를 부모 요소의 100%로 설정합니다. */
     margin-top: 10px;
+    /* 위쪽 여백을 10px로 설정합니다. */
 }
 
 .question-container {
     display: flex;
+    /* Flex 컨테이너로 설정합니다. */
     flex-direction: column;
+    /* Flex 컨테이너의 아이템들을 세로로 정렬합니다. */
     align-items: center;
+    /* 아이템들을 수평 가운데 정렬합니다. */
     background-color: #fff;
-    /* 흰색 배경 */
+    /* 배경색을 흰색으로 설정합니다. */
     padding: 10px;
+    /* 내부 여백을 위아래 10px, 좌우 10px로 설정합니다. */
     border: 1px solid #ddd;
+    /* 1px 두께의 회색 테두리를 적용합니다. */
     margin: 10px 0;
+    /* 위쪽과 아래쪽 여백을 10px, 좌우 여백은 0으로 설정합니다. */
     text-align: center;
+    /* 텍스트를 가운데 정렬합니다. */
     width: 100%;
+    /* 너비를 부모 요소의 100%로 설정합니다. */
 }
-
 
 /* 카운트 다운 요소 css */
 .time-left {
     background-color: #fff;
+    /* 배경색을 흰색으로 설정합니다. */
     padding: 10px;
+    /* 내부 여백을 위아래 10px, 좌우 10px로 설정합니다. */
     border: 1px solid #ddd;
+    /* 1px 두께의 회색 테두리를 적용합니다. */
     text-align: center;
+    /* 텍스트를 가운데 정렬합니다. */
     width: 100%;
+    /* 너비를 부모 요소의 100%로 설정합니다. */
     margin-top: 10px;
-    margin: 20px auto; 
+    /* 위쪽 여백을 10px로 설정합니다. */
+    margin: 20px auto;
+    /* 위아래 여백은 20px, 좌우 여백은 자동으로 설정합니다. */
 }
-
-
 
 .answers {
     display: flex;
+    /* Flex 컨테이너로 설정합니다. */
     justify-content: center;
+    /* 아이템들을 수평 가운데 정렬합니다. */
     width: 110%;
+    /* 너비를 부모 요소의 110%로 설정합니다. */
 }
 
 .answers p {
     background-color: #fff;
-    /* 흰색 배경 */
+    /* 배경색을 흰색으로 설정합니다. */
     padding: 10px;
+    /* 내부 여백을 위아래 10px, 좌우 10px로 설정합니다. */
     border: 1px solid #ccc;
+    /* 1px 두께의 연한 회색 테두리를 적용합니다. */
     flex: 1;
+    /* Flex 아이템이 동일한 너비를 가지도록 설정합니다. */
     margin: 0 55px;
+    /* 좌우 여백을 0 위아래 여백을 55px로 설정합니다. */
     text-align: center;
+    /* 텍스트를 가운데 정렬합니다. */
 }
 
 .btn-answer {
     background-color: #fff;
-    /* 흰색 배경 */
+    /* 배경색을 흰색으로 설정합니다. */
     padding: 10px;
+    /* 내부 여백을 위아래 10px, 좌우 10px로 설정합니다. */
     border: 1px solid #ccc;
+    /* 1px 두께의 연한 회색 테두리를 적용합니다. */
     flex: 1;
+    /* Flex 아이템이 동일한 너비를 가지도록 설정합니다. */
     margin: 0 70px;
+    /* 좌우 여백을 0 위아래 여백을 70px로 설정합니다. */
     text-align: center;
+    /* 텍스트를 가운데 정렬합니다. */
     color: black;
-    margin: 10px 70px; /* 오른쪽 마진을 조절하고자 하는 크기로 수정 */
+    /* 텍스트 색상을 검은색으로 설정합니다. */
+    margin: 10px 70px;
+    /* 오른쪽 여백을 70px로 설정합니다. (앞서의 margin 속성은 무시됨) */
 }
 
 button {
     margin-top: 20px;
+    /* 위쪽 여백을 20px로 설정합니다. */
     padding: 10px 20px;
+    /* 내부 여백을 위아래 10px, 좌우 20px로 설정합니다. */
     background-color: #007BFF;
+    /* 배경색을 짙은 파란색으로 설정합니다. */
     color: #fff;
+    /* 텍스트 색상을 흰색으로 설정합니다. */
     border: none;
+    /* 테두리를 없앱니다. */
     cursor: pointer;
-
+    /* 커서 모양을 포인터로 변경하여 버튼임을 나타냅니다. */
 }
 
 button:hover {
     background-color: #0056b3;
+    /* 마우스 호버 시 배경색을 더 진한 파란색으로 변경합니다. */
 }
-
