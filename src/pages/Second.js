@@ -11,7 +11,6 @@ export default function Second() {
 
   const [timeLeft, setTimeLeft] = useState(300); // 5분(5 * 60초)
 
-  const [answers, setAnswers] = useState([]);
   const [progress, setProgress] = useState(0); // ProgressBar 진행률 상태
 
 

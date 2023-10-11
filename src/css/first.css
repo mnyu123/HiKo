@@ -1,0 +1,24 @@
+.mw {
+    max-width: 800px; /* 페이지의 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 20px; /* 페이지 컨텐츠와 경계 사이의 간격 조정 */
+  }
+  
+  /* 네비게이션 스타일링 */
+  .first-nav {
+    background-color: #8B4513; /* 배경 색상 설정 */
+    padding: 100px; /* 내부 간격 설정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Header 컴포넌트 스타일링 */
+  .first-nav Header {
+    margin-right: 10px; /* Header 컴포넌트와 Button 컴포넌트 사이의 간격 설정 */
+  }
+  
+  /* Button 컴포넌트 스타일링 */
+  .first-div Button {
+    /* Button 컴포넌트에 대한 추가 스타일링 */
+  }
