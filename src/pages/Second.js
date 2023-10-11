@@ -5,7 +5,6 @@ import "../css/second.css"; // second.css 파일을 가져옵니다.
 import CustomProgressBar from "../common/Progressbar";
 
 export default function Second() {
-  console.log("리액트 컴포넌트가 잘 연결되었습니다.");
 
   // 재할당(변수 내용 다시 바꾸는거)이 불가능한 변수 const 생성
   // currentQuestion: 현재 문제 번호
@@ -22,6 +21,10 @@ export default function Second() {
   // setProgress: ProgressBar 진행률을 변경하는 함수
   // useState(0): progress의 초기값을 0으로 설정
   const [progress, setProgress] = useState(0); // ProgressBar 진행률 상태
+
+  // answer: 사용자의 답변
+  // setAnswer: 답변을 변경하는 함수
+  const [answer, setAnswer] = useState(""); // 사용자의 답변
 
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
@@ -98,6 +101,21 @@ export default function Second() {
     }
   };
 
+  // 답변을 입력하는 함수
+  const handleAnswerChange = (e) => {
+    setAnswer(e.target.value);
+  };
+
+  // 답변을 전송하는 함수
+  const submitAnswer = () => {
+    // 여기에서 입력한 답변을 처리하거나 확인할 수 있습니다.
+    // 예를 들어, 정답을 확인하고 결과를 표시하거나 다음 문제로 넘어갈 수 있습니다.
+    // 현재는 단순히 콘솔에 답변을 출력하는 예시입니다.
+    console.log("사용자의 답변:", answer);
+
+    // 만약 모든 문제를 푸는 동작을 추가하고자 한다면 여기에서 처리할 수 있습니다.
+  };
+
   return (
     <body>
       <Header />
@@ -125,14 +143,18 @@ export default function Second() {
         {/* 여기는 정답을 고르는 선택 버튼들 */}
         {/* API가 도입되면 여기도 변수를 받아들이는 구조로 변경되어야 할것. */}
         <div className="answers">
-          <button onClick={nextQuestion} className="btn-answer">
-            정답1
-          </button>
-          <button onClick={nextQuestion} className="btn-answer">
-            정답2
+        <input
+            className="answer-input"
+            type="text"
+            value={answer}
+            onChange={handleAnswerChange}
+            placeholder="답변을 입력하세요"
+          />
+          <button onClick={submitAnswer} className="btn-answer">
+          ↵
           </button>
           <button onClick={prevQuestion} className="btn-answer">
-            정답3
+            이전 문제
           </button>
         </div>
       </div>

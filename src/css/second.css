@@ -67,8 +67,8 @@
     /* Flex 컨테이너로 설정합니다. */
     justify-content: center;
     /* 아이템들을 수평 가운데 정렬합니다. */
-    width: 110%;
-    /* 너비를 부모 요소의 110%로 설정합니다. */
+    width: 100%;
+    /* 너비를 부모 요소의 100%로 설정합니다. */
 }
 
 .answers p {
@@ -105,6 +105,11 @@
     /* 오른쪽 여백을 70px로 설정합니다. (앞서의 margin 속성은 무시됨) */
 }
 
+.answer-input{
+    padding: 10px;
+    margin-top: 10px; /* 사용자 입력 요소와 상단 간격 추가 */
+}
+
 button {
     margin-top: 20px;
     /* 위쪽 여백을 20px로 설정합니다. */
@@ -123,4 +128,40 @@ button {
 button:hover {
     background-color: #0056b3;
     /* 마우스 호버 시 배경색을 더 진한 파란색으로 변경합니다. */
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        padding: 5px;
+    }
+
+    .question-number,
+    .question-content {
+        margin-top: 15px;
+    }
+
+    .question-container {
+        margin: 5px 1;
+    }
+
+    .time-left {
+        margin-top: 5px;
+        margin: 10px auto;
+    }
+
+    .answers p,
+    .btn-answer {
+        flex: 0 1 calc(50% - 1px); /* 요소들이 2개씩 배치되도록 */
+        margin: 5px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .answer-input {
+        margin-top: 15px; 
+    }
 }
