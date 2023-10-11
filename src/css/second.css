@@ -1,58 +1,88 @@
 .container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #8B4513; /* 나무색 배경 */
-    display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .question-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff; /* 흰색 배경 */
-    padding: 10px;
-    border: 1px solid #ddd;
-    margin: 10px 0;
-    text-align: center;
-    width: 100%;
-  }
-  
-  .question-number, .question-content {
-    background-color: #fff; /* 흰색 배경 */
+    background-color: #8B4513;
+}
+
+
+
+.question-number,
+.question-content {
+    background-color: #fff;
+    /* 흰색 배경 */
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
     width: 100%;
     margin-top: 10px;
-  }
-  
-  .answers {
+}
+
+.question-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    /* 흰색 배경 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* 카운트 다운 요소 css */
+.time-left {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    margin: 20px auto; 
+}
+
+
+
+.answers {
+    display: flex;
+    justify-content: center;
     width: 110%;
-  }
-  
-  .answers p {
-    background-color: #fff; /* 흰색 배경 */
+}
+
+.answers p {
+    background-color: #fff;
+    /* 흰색 배경 */
     padding: 10px;
     border: 1px solid #ccc;
     flex: 1;
     margin: 0 55px;
-  }
-  
-  button {
+    text-align: center;
+}
+
+.btn-answer {
+    background-color: #fff;
+    /* 흰색 배경 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex: 1;
+    margin: 0 70px;
+    text-align: center;
+    color: black;
+    margin: 10px 70px; /* 오른쪽 마진을 조절하고자 하는 크기로 수정 */
+}
+
+button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #007BFF;
     color: #fff;
     border: none;
     cursor: pointer;
-  }
-  
-  button:hover {
+
+}
+
+button:hover {
     background-color: #0056b3;
-  }
+}
+
