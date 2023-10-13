@@ -14,7 +14,7 @@ export default function Second() {
   // timeLeft: 남은 시간
   // setTimeLeft: 남은 시간을 변경하는 함수
   // useState(300): timeLeft의 초기값을 300으로 설정 = 5분(5 * 60초)
-  const [timeLeft, setTimeLeft] = useState(300); // 5분(5 * 60초)
+  const [timeLeft, setTimeLeft] = useState(150); // 5분(5 * 60초)
 
   // progress: ProgressBar 진행률
   // setProgress: ProgressBar 진행률을 변경하는 함수
@@ -28,9 +28,9 @@ export default function Second() {
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
   const questions = [
-    { number: "첫 번째", content: "바람" },
-    { number: "두 번째", content: "시나브로" },
-    { number: "세 번째", content: "나무" },
+    { number: "첫 번째", content: "어떤 일이 이루어지기를 기다리는 간절한 마음." },
+    { number: "두 번째", content: "모르는 사이에 조금씩 조금씩." },
+    { number: "세 번째", content: "땔감이 되는 나무붙이." },
   ];
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function Second() {
       // 시간이 0 이면 다음문제로 넘어감.
       if (currentQuestion < questions.length) {
         setCurrentQuestion(currentQuestion + 1);
-        setTimeLeft(300); // 다음 문제로 이동할 때 시간 초기화
+        setTimeLeft(150); // 다음 문제로 이동할 때 시간 초기화
       }
     }
 
@@ -50,14 +50,14 @@ export default function Second() {
           if (currentQuestion < questions.length) {
             setCurrentQuestion(currentQuestion + 1);
             setProgress(0); // ProgressBar 초기화
-            return 300; // 카운트다운 초기화
+            return 150; // 카운트다운 초기화
           }
           return prevTime;
         } else {
           return prevTime - 1;
         }
       });
-    }, 1000);
+    }, 3000);
 
     return () => {
       clearInterval(timer);
@@ -79,7 +79,7 @@ export default function Second() {
     if (currentQuestion < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
       setProgress(0); // ProgressBar 초기화
-      setTimeLeft(300); // 카운트다운 초기화
+      setTimeLeft(150); // 카운트다운 초기화
     } else {
       // 마지막 문제입니다 출력 후 다음 컴포넌트로 이동 예정
       showAlertMessage2();
@@ -91,7 +91,7 @@ export default function Second() {
     if (currentQuestion > 1) {
       setCurrentQuestion(currentQuestion - 1);
       setProgress(0); // ProgressBar 초기화
-      setTimeLeft(300); // 카운트다운 초기화
+      setTimeLeft(150); // 카운트다운 초기화
     } else {
       // 첫번째 문제임을 알려줌
       showAlertMessage1();
@@ -114,31 +114,71 @@ export default function Second() {
   };
 
   // 타이핑 효과 컴포넌트
+
   const TypingTitle = ({ content }) => {
-    const [typedContent, setTypedContent] = useState("");
-    const [count, setCount] = useState(0);
-
+    const [apiwords, setApiwords] = useState("");
+    const [isComplete, setIsComplete] = useState(false);
+  
     useEffect(() => {
-      let typingInterval;
-
-      const typeNextCharacter = () => {
-        if (count < content.length) {
-          setTypedContent((prevContent) => prevContent + content[count]);
-          setCount(count + 1);
+      let count = 0;
+      const typingInterval = setInterval(() => {
+        if (count < content.length-1) {
+          setApiwords((prevTitleValue) => prevTitleValue + content[count]);
+          count++;
         } else {
-          clearInterval(typingInterval); // 타이핑 완료 후 clearInterval
+          setIsComplete(true);
+          clearInterval(typingInterval);
         }
-      };
-
-      typingInterval = setInterval(typeNextCharacter, 100); // 타이핑 속도 조절 가능
-
+      }, 100);
+  
       return () => {
         clearInterval(typingInterval);
+        
       };
-    }, [content, count]);
-
-    return <div>{typedContent}</div>;
+    }, [content]);
+  
+    return (
+      <h1 className="main-title">
+        {isComplete ? content : apiwords}
+      </h1>
+    );
   };
+
+
+
+
+
+
+
+
+
+
+
+  // const TypingTitle = ({ content }) => {
+  //   const [typedContent, setTypedContent] = useState("");
+  //   const [count, setCount] = useState(0);
+
+  //   useEffect(() => {
+  //     let typingInterval;
+
+  //     const typeNextCharacter = () => {
+  //       if (count < content.length) {
+  //         setTypedContent((prevContent) => prevContent + content[count]);
+  //         setCount(count + 1);
+  //       } else {
+  //         clearInterval(typingInterval); // 타이핑 완료 후 clearInterval
+  //       }
+  //     };
+
+  //     typingInterval = setInterval(typeNextCharacter, 100); // 타이핑 속도 조절 가능
+
+  //     return () => {
+  //       clearInterval(typingInterval);
+  //     };
+  //   }, [content, count]);
+
+  //   return <div className="typing-title">{typedContent}</div>; // Add a CSS class to style the typing text
+  // };
 
   return (
     <body>
@@ -153,14 +193,14 @@ export default function Second() {
             questions[currentQuestion - 1].number
           } 문제`}</div>
           <div className="question-content">
-            <TypingTitle content={questions[currentQuestion - 1].content} />의
+            <TypingTitle content={questions[currentQuestion-1].content} />의
             뜻은?
           </div>
         </div>
         {/* 부트 스트랩 프로그레스 바 사용 | math.round는 정수로 계산이고 */}
         {/* 프로그레스바 1초씩 증가하는 연산 */}
         <CustomProgressBar
-          now={Math.round(((300 - timeLeft) / 300) * 100)}
+          now={Math.round(((150 - timeLeft) / 150) * 100)}
         />{" "}
         {/* ProgressBar 컴포넌트 사용 */}
         {/* 여기는 정답을 고르는 선택 버튼들 */}
