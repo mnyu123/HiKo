@@ -28,8 +28,8 @@ export default function End() {
           <br></br>
         </div>
         <div>
-          <a href="/HiKo" class="button">메인 화면으로</a>
-          <a href="/HiKo" class="button">다시 풀어보기</a>
+          <a href="/HiKo" class="endpage-button">메인 화면으로</a>
+          <a href="/HiKo" class="endpage-button">다시 풀어보기</a>
         </div>
       </div>
     </body>

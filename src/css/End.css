@@ -4,7 +4,7 @@
     font-weight: normal;
 }
 
-.button {
+.endpage-button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #b6b6b6; /* 버튼 배경색 */
@@ -54,7 +54,7 @@ input {
     padding-left: 15px; /*입력칸 앞에 공백*/
     border-radius: 5px;
     border: 1px solid #333;
-    margin: 10px;
+    margin: 15px;
 }
 
 .result-message {
