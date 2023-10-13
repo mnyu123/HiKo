@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Header from "../common/Header";
 import "../css/second.css"; // second.css 파일을 가져옵니다.
 
 import CustomProgressBar from "../common/Progressbar";
+
+import Timer from "../common/timer"; // Import the Timer component
 
 export default function Second() {
   // 재할당(변수 내용 다시 바꾸는거)이 불가능한 변수 const 생성
@@ -10,11 +12,6 @@ export default function Second() {
   // setCurrentQuestion: 현재 문제 번호를 변경하는 함수
   // useState(1): currentQuestion의 초기값을 1로 설정 = 무슨말이냐면 첫번째 문제를 보여주기 위해 1로 설정
   const [currentQuestion, setCurrentQuestion] = useState(1);
-
-  // timeLeft: 남은 시간
-  // setTimeLeft: 남은 시간을 변경하는 함수
-  // useState(300): timeLeft의 초기값을 300으로 설정 = 5분(5 * 60초)
-  const [timeLeft, setTimeLeft] = useState(300); // 5분(5 * 60초)
 
   // progress: ProgressBar 진행률
   // setProgress: ProgressBar 진행률을 변경하는 함수
@@ -25,44 +22,49 @@ export default function Second() {
   // setAnswer: 답변을 변경하는 함수
   const [answer, setAnswer] = useState(""); // 사용자의 답변
 
+  const [timeLeft, setTimeLeft] = useState(300); // Declare timeLeft here
+  console.log("처음 timeleft 세팅된 시간",timeLeft);
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
   const questions = [
-    { number: "첫 번째", content: "어 떤 일이 이루어지기를 기다리는 간절한 마음." },
-    { number: "두 번째", content: "모 르는 사이에 조금씩 조금씩." },
-    { number: "세 번째", content: "땔 감이 되는 나무붙이." },
+    {
+      number: "첫 번째",
+      content: "어떤 일이 이루어지기를 기다리는 간절한 마음",
+    },
+    { number: "두 번째", content: "모르는 사이에 조금씩 조금씩." },
+    { number: "세 번째", content: "땔감이 되는 나무붙이." },
   ];
 
-  useEffect(() => {
-    if (timeLeft === 0) {
-      // 시간이 0 이면 다음문제로 넘어감.
-      if (currentQuestion < questions.length) {
-        setCurrentQuestion(currentQuestion + 1);
-        setTimeLeft(300); // 다음 문제로 이동할 때 시간 초기화
-      }
-    }
+  // useEffect(() => {
+  //   if (timeLeft === 0) {
+  //     // 시간이 0 이면 다음문제로 넘어감.
+  //     if (currentQuestion < questions.length) {
+  //       setCurrentQuestion(currentQuestion + 1);
+  //       setTimeLeft(300); // 다음 문제로 이동할 때 시간 초기화
+  //     }
+  //   }
 
-    // 1초마다 timeLeft를 1씩 감소시킴
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime === 0) {
-          // 시간이 다 끝났을 때 다음 문제로 이동하거나 필요한 작업을 수행
-          if (currentQuestion < questions.length) {
-            setCurrentQuestion(currentQuestion + 1);
-            setProgress(0); // ProgressBar 초기화
-            return 300; // 카운트다운 초기화
-          }
-          return prevTime;
-        } else {
-          return prevTime - 1;
-        }
-      });
-    }, 3000);
+  // 1초마다 timeLeft를 1씩 감소시킴
+  //   const timer = setInterval(() => {
+  //     setTimeLeft((prevTime) => {
+  //       if (prevTime === 0) {
+  //         // 시간이 다 끝났을 때 다음 문제로 이동하거나 필요한 작업을 수행
+  //         if (currentQuestion < questions.length) {
+  //           setCurrentQuestion(currentQuestion + 1);
+  //           setProgress(0); // ProgressBar 초기화
+  //           return 300; // 카운트다운 초기화
+  //         }
+  //         return prevTime;
+  //       } else {
+  //         return prevTime - 1;
+  //       }
+  //     });
+  //   }, 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, [timeLeft, currentQuestion]);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [timeLeft, currentQuestion]);
 
   // 만약 문제를 다 풀거나 1번문제 이전으로 돌아가려고 하면
   const showAlertMessage1 = () => {
@@ -74,12 +76,19 @@ export default function Second() {
     alert("이것이 마지막 문제입니다!");
   };
 
+  const initialTime = 300;
+
+  const resetTimer = () => {
+    setTimeLeft(0);
+  };
+
+
   // 다음 문제로 넘어가는 함수
   const nextQuestion = () => {
     if (currentQuestion < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
       setProgress(0); // ProgressBar 초기화
-      setTimeLeft(300); // 카운트다운 초기화
+      resetTimer();
     } else {
       // 마지막 문제입니다 출력 후 다음 컴포넌트로 이동 예정
       showAlertMessage2();
@@ -91,7 +100,7 @@ export default function Second() {
     if (currentQuestion > 1) {
       setCurrentQuestion(currentQuestion - 1);
       setProgress(0); // ProgressBar 초기화
-      setTimeLeft(300); // 카운트다운 초기화
+      resetTimer();
     } else {
       // 첫번째 문제임을 알려줌
       showAlertMessage1();
@@ -100,6 +109,7 @@ export default function Second() {
 
   // 답변을 입력하는 함수
   const handleAnswerChange = (e) => {
+    e.preventDefault();
     setAnswer(e.target.value);
   };
 
@@ -112,47 +122,42 @@ export default function Second() {
 
     // 만약 모든 문제를 푸는 동작을 추가하고자 한다면 여기에서 처리할 수 있습니다.
   };
-
+  const handleTimeExpired = () => {
+    if (currentQuestion < questions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+      setProgress(0);
+      setAnswer("");
+    } else {
+      showAlertMessage2();
+    }
+  };
   // 타이핑 효과 컴포넌트
 
   const TypingTitle = ({ content }) => {
-    const [apiwords, setApiwords] = useState("");
-    const [isComplete, setIsComplete] = useState(false);
-  
+    const [typedContent, setTypedContent] = useState("");
+    const [count, setCount] = useState(0);
+
     useEffect(() => {
-      let count = 0;
-      const typingInterval = setInterval(() => {
-        if (count < content.length-1) {
-          setApiwords((prevTitleValue) => prevTitleValue + content[count]);
-          count++;
+      let typingInterval;
+
+      const typeNextCharacter = () => {
+        if (count < content.length) {
+          setTypedContent((prevContent) => prevContent + content[count]);
+          setCount(count + 1);
         } else {
-          setIsComplete(true);
-          clearInterval(typingInterval);
+          clearInterval(typingInterval); // 타이핑 완료 후 clearInterval
         }
-      }, 100);
-  
+      };
+
+      typingInterval = setInterval(typeNextCharacter, 100); // 타이핑 속도 조절 가능
+
       return () => {
         clearInterval(typingInterval);
-        
       };
-    }, [content]);
-  
-    return (
-      <h1 className="main-title">
-        {isComplete ? content : apiwords}
-      </h1>
-    );
+    }, [content, count]);
+
+    return <div className="typing-title">{typedContent}</div>; // Add a CSS class to style the typing text
   };
-
-
-
-
-
-
-
-
-
-
 
   // const TypingTitle = ({ content }) => {
   //   const [typedContent, setTypedContent] = useState("");
@@ -177,9 +182,10 @@ export default function Second() {
   //     };
   //   }, [content, count]);
 
-  //   return <div className="typing-title">{typedContent}</div>; // Add a CSS class to style the typing text
+  //   return <div>{typedContent}</div>;
   // };
-
+  console.log("마지막 타이머 검사",timeLeft);
+  console.log("처음 정했던 시간 ",initialTime);
   return (
     <body>
       <Header />
@@ -193,15 +199,13 @@ export default function Second() {
             questions[currentQuestion - 1].number
           } 문제`}</div>
           <div className="question-content">
-            <TypingTitle content={questions[currentQuestion-1].content} />의
+            <TypingTitle content={questions[currentQuestion - 1].content} />의
             뜻은?
           </div>
         </div>
         {/* 부트 스트랩 프로그레스 바 사용 | math.round는 정수로 계산이고 */}
         {/* 프로그레스바 1초씩 증가하는 연산 */}
-        <CustomProgressBar
-          now={Math.round(((300 - timeLeft) / 100) * 100)}
-        />{" "}
+        <CustomProgressBar now={(initialTime - timeLeft) + 100} />{" "}
         {/* ProgressBar 컴포넌트 사용 */}
         {/* 여기는 정답을 고르는 선택 버튼들 */}
         {/* API가 도입되면 여기도 변수를 받아들이는 구조로 변경되어야 할것. */}
@@ -224,6 +228,11 @@ export default function Second() {
           </button>
         </div>
       </div>
+      <Timer
+        initialTime={initialTime}
+        onTimeExpired={handleTimeExpired}
+        resetTimer={resetTimer}
+      />
     </body>
   );
 }
