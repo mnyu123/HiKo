@@ -2,6 +2,8 @@
     max-width: 800px; /* 페이지의 최대 너비 설정 */
     margin: 0 auto; /* 가운데 정렬 */
     padding: 20px; /* 페이지 컨텐츠와 경계 사이의 간격 조정 */
+    text-align: center;
+    align-items: center;
   }
   
   /* 네비게이션 스타일링 */
@@ -10,7 +12,6 @@
     padding: 100px; /* 내부 간격 설정 */
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
   
   /* Header 컴포넌트 스타일링 */
