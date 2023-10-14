@@ -25,7 +25,7 @@ export default function Popup()
     };
 
     return (  
-    <div
+    <span
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
         {isMouseOver && (
@@ -38,6 +38,6 @@ export default function Popup()
           팝업 내용
         </div>
       )}
-        ?</div>
+        ?</span>
     );
 }

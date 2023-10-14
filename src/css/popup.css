@@ -1,10 +1,10 @@
-div {
+span {
     width:100px;
     height: 100px;
     border:1px solid black;
 }
 
-div div {
+span div {
     position:absolute;
     background:white;
     padding:10px;
