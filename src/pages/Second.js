@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
 import "../css/second.css"; // second.css 파일을 가져옵니다.
 
@@ -6,7 +6,9 @@ import CustomProgressBar from "../common/Progressbar";
 
 import Timer from "../common/timer"; // Import the Timer component
 
-export default function Second() {
+export default function Second({ data, word, definition }) {
+  // 인수값이 넘어왔는지 콘솔로 테스트
+  console.log("second.js에 인수값 넘어왔는지 테스트:",definition);
   // 재할당(변수 내용 다시 바꾸는거)이 불가능한 변수 const 생성
   // currentQuestion: 현재 문제 번호
   // setCurrentQuestion: 현재 문제 번호를 변경하는 함수
@@ -32,7 +34,7 @@ export default function Second() {
       content: "어떤 일이 이루어지기를 기다리는 간절한 마음",
     },
     { number: "두 번째", content: "모르는 사이에 조금씩 조금씩." },
-    { number: "세 번째", content: "땔감이 되는 나무붙이." },
+    { number: "세 번째", content: definition },
   ];
 
   // useEffect(() => {
@@ -184,8 +186,8 @@ export default function Second() {
 
   //   return <div>{typedContent}</div>;
   // };
-  console.log("마지막 타이머 검사",timeLeft);
-  console.log("처음 정했던 시간 ",initialTime);
+  // console.log("마지막 타이머 검사",timeLeft);
+  // console.log("처음 정했던 시간 ",initialTime);
   return (
     <body>
       <Header />
