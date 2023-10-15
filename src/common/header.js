@@ -8,11 +8,12 @@ export default function Header() {
 
   return (
     <header className="mw">
+
+    
     
       <h1>
-        히코
+        히코 <Popup/>
       </h1>
-        <Popup/>
 
       <nav>
         <Link to="/end">마지막페이지</Link>

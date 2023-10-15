@@ -25,17 +25,19 @@ export default function Popup()
     };
 
     return (  
-    <span
+    <span className='helpbox'
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
         {isMouseOver && (
           <div
-            style={{
-              top: position.y + 10, // Adjust the position as needed
-              left: position.x + 10, // Adjust the position as needed
-            }}
+          style={{
+            position: 'fixed', // Fixed position to keep it on the screen
+            top: position.y + 10,
+            left: position.x + 10,
+          }}
           >
-          팝업 내용
+          여기 도움말 내용을<br/>
+          여기에 넣으시면 됩니다.
         </div>
       )}
         ?</span>
