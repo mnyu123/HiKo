@@ -8,9 +8,7 @@ export default function Header() {
 
   return (
     <header className="mw">
-
-    
-    
+      <span className="projectName">Hiko</span>
       <h1>
         히코 <Popup/>
       </h1>

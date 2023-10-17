@@ -1,10 +1,13 @@
 .helpbox {
+    margin-right:20px;
+    float:right;
     font-size:20px;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: dodgerblue;
-    width:100px;
-    height: 100px;
+    width:50px;
+    height: 50px;
     border:1px solid black;
+    line-height : 50px;
 }
 
 .helpbox div {
@@ -13,4 +16,5 @@
     background:white;
     padding:10px;
     border: 1px solid black;
+    text-align: left;
 }

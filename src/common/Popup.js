@@ -36,8 +36,8 @@ export default function Popup()
             left: position.x + 10,
           }}
           >
-          여기 도움말 내용을<br/>
-          여기에 넣으시면 됩니다.
+          나오는 문제에 따라 주관식으로 푸는 문제입니다.<br/>
+          총 문제는 3문제이고 제한시간은 300초 입니다.
         </div>
       )}
         ?</span>
