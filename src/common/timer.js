@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { ProgressBar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function CustomProgressBar({ now, initialTime }) {
+  return (
+    <ProgressBar animated now={now} max={initialTime} label={`${now}초`} />
+  );
+}
 
 const Timer = ({ initialTime, onTimeExpired , resetTimer}) => {
   const [timeLeft, setTimeLeft] = useState(initialTime);
@@ -18,7 +26,12 @@ const Timer = ({ initialTime, onTimeExpired , resetTimer}) => {
     };
   }, [timeLeft, onTimeExpired , resetTimer]);
 
-  return <div>Time Left: {timeLeft} seconds</div>;
+  return (
+    <div>
+      <CustomProgressBar now={initialTime - timeLeft} initialTime={initialTime} />
+      Time Left: {timeLeft} seconds
+    </div>
+  );
 };
 
 export default Timer;
