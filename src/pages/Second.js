@@ -4,7 +4,9 @@ import "../css/second.css"; // second.css 파일을 가져옵니다.
 
 import CustomProgressBar from "../common/Progressbar";
 
-import Timer from "../common/timer"; // Import the Timer component
+import Timer from "../common/timer"; 
+
+import TypingTitle from "./TypingTitle";
 
 export default function Second({ data, word, definition }) {
   // 인수값이 넘어왔는지 콘솔로 테스트
@@ -111,37 +113,7 @@ export default function Second({ data, word, definition }) {
       showAlertMessage2();
     }
   };
-  // 타이핑 효과 컴포넌트
-
-  const TypingTitle = ({ content }) => {
-    const [typedContent, setTypedContent] = useState("");
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      let typingInterval;
-
-      const typeNextCharacter = () => {
-        if (count < content.length) {
-          setTypedContent((prevContent) => prevContent + content[count]);
-          setCount(count + 1);
-        } else {
-          clearInterval(typingInterval); // 타이핑 완료 후 clearInterval
-        }
-      };
-
-      // 타이핑을 시작하는 조건 추가
-      if (content !== typedContent) {
-        typingInterval = setInterval(typeNextCharacter, 100);
-      }
-
-      return () => {
-        clearInterval(typingInterval);
-      };
-    }, [content, count]);
-
-    return <div className="typing-title">{typedContent}</div>; // Add a CSS class to style the typing text
-  };
-
+  
   return (
     <body>
       <Header />
@@ -156,8 +128,8 @@ export default function Second({ data, word, definition }) {
           } 문제`}</div>
           <div className="question-content">
             <TypingTitle
-              content={questions[currentQuestion - 1].content}
-              input={input}
+            content={questions[currentQuestion - 1].content}
+            input={input}
             />
             의 뜻은?
           </div>
