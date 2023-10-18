@@ -68,6 +68,9 @@ export default function Second({ data, word, definition }) {
       setCurrentQuestion(currentQuestion + 1);
       setProgress(0); // ProgressBar 초기화
       resetTimer();
+
+      // TypingTitle 컴포넌트의 내용 초기화
+      setInput(""); // input 초기화
     } else {
       // 마지막 문제입니다 출력 후 다음 컴포넌트로 이동 예정
       showAlertMessage2();
@@ -80,6 +83,9 @@ export default function Second({ data, word, definition }) {
       setCurrentQuestion(currentQuestion - 1);
       setProgress(0); // ProgressBar 초기화
       resetTimer();
+
+      // TypingTitle 컴포넌트의 내용 초기화
+      setInput(""); // input 초기화
     } else {
       // 첫번째 문제임을 알려줌
       showAlertMessage1();
