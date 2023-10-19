@@ -4,7 +4,7 @@ import "../css/second.css"; // second.css 파일을 가져옵니다.
 
 import CustomProgressBar from "../common/Progressbar";
 
-import Timer from "../common/timer"; 
+import Timer from "../common/timer";
 
 import TypingTitle from "./TypingTitle";
 
@@ -32,11 +32,26 @@ export default function Second({ data, word, definition }) {
 
   const [input, setInput] = useState(""); // 입력 창의 상태
 
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
+
+  const [correctAnswers] = useState([
+    ["바람", "바람의 뜻"],
+    ["시나브로", "시나브로의 뜻"],
+    ["나무", "나무의 뜻"],
+  ]);
+
+  const clearInput = () => {
+    setInput("");
+    setAnswer("");
+    setIsAnswerCorrect(null);
+  };
+
   useEffect(() => {
     console.log("처음 timeleft 세팅된 시간", timeLeft);
   }, [timeLeft]); // timeLeft 값이 변경될 때만 실행
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
+  console.log("문제 정답 저거 뭐였지?:,", word);
   const questions = [
     {
       number: "첫 번째",
@@ -69,6 +84,10 @@ export default function Second({ data, word, definition }) {
       setProgress(0); // ProgressBar 초기화
       resetTimer();
 
+      clearInput();
+
+      setIsAnswerCorrect(false);
+
       // TypingTitle 컴포넌트의 내용 초기화
       setInput(""); // input 초기화
     } else {
@@ -83,6 +102,10 @@ export default function Second({ data, word, definition }) {
       setCurrentQuestion(currentQuestion - 1);
       setProgress(0); // ProgressBar 초기화
       resetTimer();
+
+      clearInput();
+
+      setIsAnswerCorrect(false);
 
       // TypingTitle 컴포넌트의 내용 초기화
       setInput(""); // input 초기화
@@ -104,6 +127,15 @@ export default function Second({ data, word, definition }) {
     // 현재는 단순히 콘솔에 답변을 출력하는 예시입니다.
     console.log("사용자의 답변:", answer);
 
+    const currentAnswer = questions[currentQuestion - 1].content;
+    const possibleAnswers = correctAnswers[currentQuestion - 1];
+
+    if (possibleAnswers.includes(answer)) {
+      setIsAnswerCorrect(true);
+    } else {
+      setIsAnswerCorrect(false);
+    }
+
     // 페이지가 다시 로딩되지 않도록 아래 두 줄을 추가
     setProgress(100);
     resetTimer();
@@ -111,15 +143,25 @@ export default function Second({ data, word, definition }) {
     // 만약 모든 문제를 푸는 동작을 추가하고자 한다면 여기에서 처리할 수 있습니다.
   };
   const handleTimeExpired = () => {
+    // 현재 문제 번호가 문제 목록의 마지막이 아니면 다음 문제로 넘어감
     if (currentQuestion < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
-      setProgress(0);
+      setProgress(0); // ProgressBar 초기화
       setAnswer("");
+      setIsAnswerCorrect(false);
+
+      resetTimer();
     } else {
-      showAlertMessage2();
+      if (currentQuestion === questions.length) {
+        alert("마지막 문제입니다.");
+      } else if (currentQuestion === questions.length - 1) {
+        alert("이것이 세 번째 문제입니다: '" + questions[2].content + "'");
+      } else {
+        alert("제발 동작해 주세요 다음문제로 가라고 마지막문제 말고!!");
+      }
     }
   };
-  
+
   return (
     <body>
       <Header />
@@ -134,8 +176,8 @@ export default function Second({ data, word, definition }) {
           } 문제`}</div>
           <div className="question-content">
             <TypingTitle
-            content={questions[currentQuestion - 1].content}
-            input={input}
+              content={questions[currentQuestion - 1].content}
+              input={input}
             />
             의 뜻은?
           </div>
@@ -143,11 +185,10 @@ export default function Second({ data, word, definition }) {
         {/* 부트 스트랩 프로그레스 바 사용 | math.round는 정수로 계산이고 */}
         {/* 프로그레스바 1초씩 증가하는 연산 */}
         <Timer
-        initialTime={initialTime}
-        onTimeExpired={handleTimeExpired}
-        resetTimer={resetTimer}
-      />{" "}
-        
+          initialTime={initialTime}
+          onTimeExpired={handleTimeExpired}
+          resetTimer={resetTimer}
+        />{" "}
         {/* ProgressBar 컴포넌트 사용 */}
         {/* 여기는 정답을 고르는 선택 버튼들 */}
         {/* API가 도입되면 여기도 변수를 받아들이는 구조로 변경되어야 할것. */}
@@ -172,8 +213,15 @@ export default function Second({ data, word, definition }) {
             이전 문제
           </button>
         </div>
+        {isAnswerCorrect === true && (
+          <div className="answer-feedback">
+            정답입니다! 다음 문제로 진행하세요.
+          </div>
+        )}
+        {isAnswerCorrect === false && isAnswerCorrect !== null && (
+          <div className="answer-feedback">틀렸습니다. 다시 시도하세요.</div>
+        )}
       </div>
-      
     </body>
   );
 }

@@ -29,7 +29,7 @@ const Timer = ({ initialTime, onTimeExpired , resetTimer}) => {
   return (
     <div>
       <CustomProgressBar now={initialTime - timeLeft} initialTime={initialTime} />
-      Time Left: {timeLeft} seconds
+      남은시간: {timeLeft} 초
     </div>
   );
 };
