@@ -164,7 +164,7 @@ export default function Second({data}) {
 console.log("input test",input===data[currentQuestion-1].word);
 // 조건비교 성공시 nextque score +1
 console.log("cuQ",currentQuestion);
-if(input=== data[currentQuestion-1].word){
+if(input=== data[currentQuestion-1].word){ //정답 오답 조건
   setScore((state)=>{
 
 

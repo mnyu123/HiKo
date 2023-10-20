@@ -18,7 +18,7 @@
     /* 1px 두께의 회색 테두리를 적용합니다. */
     text-align: center;
     /* 텍스트를 가운데 정렬합니다. */
-    width: 100%;
+    width: 1280px;
     /* 너비를 부모 요소의 100%로 설정합니다. */
     margin-top: 10px;
     /* 위쪽 여백을 10px로 설정합니다. */
@@ -140,7 +140,7 @@ button:hover {
     /* 마우스 호버 시 배경색을 더 진한 파란색으로 변경합니다. */
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1400px) {
     .container {
         padding: 5px;
     }
@@ -148,6 +148,7 @@ button:hover {
     .question-number,
     .question-content {
         margin-top: 15px;
+        width: 100%;
     }
 
     .question-container {
