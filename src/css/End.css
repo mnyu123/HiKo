@@ -17,6 +17,10 @@
     transition: background-color 0.3s;
     margin: 20px; /* 호버 효과 */
   }
+
+  .bigtesttitlearea {
+    white-space: nowrap;
+  }
   
   .button:hover {
     background-color: #000000; /* 호버 시 배경색 변경 */
@@ -27,17 +31,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
     font-family: 'Yeon Sung', cursive;
+}
+
+.titlearea{
+    display: flex;
+    flex-direction: column;
 }
 
 .testpapername {
     text-align: center;
     font-size: 50px;
     font-weight: lighter;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-family: SDGothic;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .testtitlearea {
@@ -76,8 +88,7 @@ input {
     background-image: url("/public/cement-texture.jpg");
     background-size: auto 100%; /* 세로 모양의 texture 를 가로로 표시 */
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); /* 그림자 속성 추가 */
-    padding: 300px;
-    margin: 20px auto;
+    padding: 300px 200px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -101,6 +112,8 @@ input {
     font-size: 25px;
     font-family: SDGothic;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
 }
 
 .titleendboxcontainer {
@@ -111,4 +124,50 @@ input {
 
 .restartbutton {
     margin-top: 50px;
+}
+
+@media screen and (max-width: 800px){
+
+    .end-container {
+        padding: 100px;
+        margin: 30px;
+    }
+
+    .bigtesttitlearea {
+        font-size: 25px;
+    }
+
+    .testtitlearea {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .namenumber {
+        font-size: 20px;
+        flex-direction: column;
+    }
+
+    .result-message {
+        font-size: 20px;
+        width: 200px;
+    }
+
+    .score {
+        font-size: 30px;
+
+    }
+
+    .endpage-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #b6b6b6; /* 버튼 배경색 */
+        color: #3e3e3e; /* 버튼 텍스트 색상 */
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* 둥근 모서리 */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 20px; /* 호버 효과 */
+      }
 }
