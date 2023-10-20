@@ -32,8 +32,9 @@ export default function Popup()
           <div
           style={{
             position: 'fixed', // Fixed position to keep it on the screen
+            transform: 'translate(-100%, 0%)',
             top: position.y + 10,
-            left: position.x + 10,
+            left: position.x - 10,
           }}
           >
           나오는 문제에 따라 주관식으로 푸는 문제입니다.<br/>
