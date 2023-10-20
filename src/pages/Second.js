@@ -8,11 +8,11 @@ import Timer from "../common/timer";
 
 import TypingTitle from "./TypingTitle";
 
-export default function Second({ data, word, definition }) {
+export default function Second({ data}) {
+  console.log("로딩테스트");
+
   // 인수값이 넘어왔는지 콘솔로 테스트
-  useEffect(() => {
-    console.log("second.js에 인수값 넘어왔는지 테스트:", definition);
-  }, []); // 빈 배열을 전달하여 이펙트가 한 번만 실행되도록 설정
+ // 빈 배열을 전달하여 이펙트가 한 번만 실행되도록 설정
   // 재할당(변수 내용 다시 바꾸는거)이 불가능한 변수 const 생성
   // currentQuestion: 현재 문제 번호
   // setCurrentQuestion: 현재 문제 번호를 변경하는 함수
@@ -47,20 +47,34 @@ export default function Second({ data, word, definition }) {
   };
 
   useEffect(() => {
-    console.log("처음 timeleft 세팅된 시간", timeLeft);
+    // console.log("처음 timeleft 세팅된 시간", timeLeft);
   }, [timeLeft]); // timeLeft 값이 변경될 때만 실행
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
-  console.log("문제 정답 저거 뭐였지?:,", word);
-  const questions = [
-    {
-      number: "첫 번째",
-      content: "어떤 일이 이루어지기를 기다리는 간절한 마음",
-    },
-    { number: "두 번째", content: "모르는 사이에 조금씩 조금씩." },
-    { number: "세 번째", content: definition },
-  ];
+  
+  // const questions = [
+  //   {
+  //     number: "첫 번째",
+  //     content: "어떤 일이 이루어지기를 기다리는 간절한 마음",
+  //   },
+  //   { number: "두 번째", content: "모르는 사이에 조금씩 조금씩." },
+  //   { number: "세 번째", content: data.definition },
+  // ];
+  const questions= [
+    {number:"첫번쨰"},{number:"두번째"},{number:"세번째"},{number:"네번째"},{number:"다섯번째"},
+    {number:"여섯번째"},{number:"일곱번째"},{number:"여덟번째"},{number:"아홉번째"},{number:"열번째"}
+    ]
+    //데이터리스트 만큼만 for문이 작동됨
+if (data.length!==0) {
+  for(let i = 0; i<data.length; i++){
+    questions[i]={
+      number : i+1+"번째" ,
+      contents: data[i].definition
+      };
+    }  
+}
 
+    
   // 만약 문제를 다 풀거나 1번문제 이전으로 돌아가려고 하면
   const showAlertMessage1 = () => {
     alert("이것이 첫번째 문제입니다!");
@@ -125,7 +139,7 @@ export default function Second({ data, word, definition }) {
     // 여기에서 입력한 답변을 처리하거나 확인할 수 있습니다.
     // 예를 들어, 정답을 확인하고 결과를 표시하거나 다음 문제로 넘어갈 수 있습니다.
     // 현재는 단순히 콘솔에 답변을 출력하는 예시입니다.
-    console.log("사용자의 답변:", answer);
+    // console.log("사용자의 답변:", answer);
 
     const currentAnswer = questions[currentQuestion - 1].content;
     const possibleAnswers = correctAnswers[currentQuestion - 1];
@@ -174,11 +188,15 @@ export default function Second({ data, word, definition }) {
             // 형태 = 1번째 + 문제 => 첫번째 문제 이렇게 된다.
             questions[currentQuestion - 1].number
           } 문제`}</div>
-          <div className="question-content">
-            <TypingTitle
-              content={questions[currentQuestion - 1].content}
-              input={input}
-            />
+          <div className="question-content">{
+            questions[currentQuestion - 1].contents?
+      <TypingTitle
+      content={questions[currentQuestion - 1].contents}
+      input={input}
+      />:<div>로딩중</div>
+
+          }
+             
             의 뜻은?
           </div>
         </div>
