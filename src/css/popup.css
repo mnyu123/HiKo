@@ -1,3 +1,4 @@
+
 .helpbox {
     margin-right:20px;
     float:right;
@@ -11,6 +12,8 @@
 }
 
 .helpbox div {
+    width:auto;
+    min-width: 460px;
     font-size:36px;
     border-radius: 10px;
     background:white;
