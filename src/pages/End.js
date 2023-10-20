@@ -1,9 +1,12 @@
 import React from "react";
 import "../css/end.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function End() {
-  console.log("리액트 컴포넌트가 잘 연결되었습니다.");
+  const location = useLocation();
+
+  console.log("리액트 컴포넌트가 잘 연결되었습니다.",location.state);
+
   return (
     <body>
       <div class="end-container">
@@ -28,7 +31,7 @@ export default function End() {
         <div class="seconddialog">
           <div class="result-message">게임이 종료되었습니다.</div>
           <div class="score">
-            당신이 맞춘 개수는 <span id="score">?/10</span> 입니다.
+            당신이 맞춘 개수는 <span id="score">{location.state.score}/10</span> 입니다.
           </div>
           <br></br>
         </div>

@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
 import "../css/second.css"; // second.css 파일을 가져옵니다.
-
-import CustomProgressBar from "../common/Progressbar";
 
 import Timer from "../common/timer";
 
 import TypingTitle from "./TypingTitle";
+import { useNavigate } from "react-router-dom";
 
-export default function Second({ data}) {
+
+export default function Second({data}) {
+
   console.log("로딩테스트");
 
   // 인수값이 넘어왔는지 콘솔로 테스트
- // 빈 배열을 전달하여 이펙트가 한 번만 실행되도록 설정
+  // 빈 배열을 전달하여 이펙트가 한 번만 실행되도록 설정
   // 재할당(변수 내용 다시 바꾸는거)이 불가능한 변수 const 생성
   // currentQuestion: 현재 문제 번호
   // setCurrentQuestion: 현재 문제 번호를 변경하는 함수
@@ -34,24 +35,27 @@ export default function Second({ data}) {
 
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
 
-  const [correctAnswers] = useState([
-    ["바람", "바람의 뜻"],
-    ["시나브로", "시나브로의 뜻"],
-    ["나무", "나무의 뜻"],
-  ]);
+
+  const [Score, setScore] = useState(0);
+  const Navigate = useNavigate();
+
+
+
+ 
 
   const clearInput = () => {
     setInput("");
     setAnswer("");
     setIsAnswerCorrect(null);
   };
+  console.log("스코어",Score);
 
   useEffect(() => {
     // console.log("처음 timeleft 세팅된 시간", timeLeft);
-  }, [timeLeft]); // timeLeft 값이 변경될 때만 실행
+  }, [timeLeft,Score]); // timeLeft 값이 변경될 때만 실행
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
-  
+
   // const questions = [
   //   {
   //     number: "첫 번째",
@@ -60,21 +64,30 @@ export default function Second({ data}) {
   //   { number: "두 번째", content: "모르는 사이에 조금씩 조금씩." },
   //   { number: "세 번째", content: data.definition },
   // ];
-  const questions= [
-    {number:"첫번쨰"},{number:"두번째"},{number:"세번째"},{number:"네번째"},{number:"다섯번째"},
-    {number:"여섯번째"},{number:"일곱번째"},{number:"여덟번째"},{number:"아홉번째"},{number:"열번째"}
-    ]
-    //데이터리스트 만큼만 for문이 작동됨
-if (data.length!==0) {
-  for(let i = 0; i<data.length; i++){
-    questions[i]={
-      number : i+1+"번째" ,
-      contents: data[i].definition
+  const questions = [
+    { number: "첫번쨰" },
+    { number: "두번째" },
+    { number: "세번째" },
+    { number: "네번째" },
+    { number: "다섯번째" },
+    { number: "여섯번째" },
+    { number: "일곱번째" },
+    { number: "여덟번째" },
+    { number: "아홉번째" },
+    { number: "열번째" },
+  ];
+  //데이터리스트 만큼만 for문이 작동됨
+  if (data.length !== 0) {
+    for (let i = 0; i < data.length; i++) {
+      questions[i] = {
+        number: questions[i].number,
+        contents: data[i].definition,
       };
+
     }  
 }
-
     
+
   // 만약 문제를 다 풀거나 1번문제 이전으로 돌아가려고 하면
   const showAlertMessage1 = () => {
     alert("이것이 첫번째 문제입니다!");
@@ -134,6 +147,10 @@ if (data.length!==0) {
     setAnswer(e.target.value);
   };
 
+  if (data&&data.length>0) {
+    console.log("currque",data[currentQuestion-1].word);
+    
+  }
   // 답변을 전송하는 함수
   const submitAnswer = () => {
     // 여기에서 입력한 답변을 처리하거나 확인할 수 있습니다.
@@ -141,21 +158,37 @@ if (data.length!==0) {
     // 현재는 단순히 콘솔에 답변을 출력하는 예시입니다.
     // console.log("사용자의 답변:", answer);
 
-    const currentAnswer = questions[currentQuestion - 1].content;
-    const possibleAnswers = correctAnswers[currentQuestion - 1];
+    // const currentAnswer = data[currentQuestion - 1].word;
 
-    if (possibleAnswers.includes(answer)) {
-      setIsAnswerCorrect(true);
-    } else {
-      setIsAnswerCorrect(false);
+    
+console.log("input test",input===data[currentQuestion-1].word);
+// 조건비교 성공시 nextque score +1
+console.log("cuQ",currentQuestion);
+if(input=== data[currentQuestion-1].word){
+  setScore((state)=>{
+
+
+    const num =state+=1
+    if (data.length === currentQuestion) {
+
+      Navigate("/end", {state : {score : state}});
     }
+return num;
+  });
+  
+  
+  nextQuestion();
+
+  
 
     // 페이지가 다시 로딩되지 않도록 아래 두 줄을 추가
     setProgress(100);
     resetTimer();
+}
 
     // 만약 모든 문제를 푸는 동작을 추가하고자 한다면 여기에서 처리할 수 있습니다.
   };
+  
   const handleTimeExpired = () => {
     // 현재 문제 번호가 문제 목록의 마지막이 아니면 다음 문제로 넘어감
     if (currentQuestion < questions.length) {
@@ -188,15 +221,15 @@ if (data.length!==0) {
             // 형태 = 1번째 + 문제 => 첫번째 문제 이렇게 된다.
             questions[currentQuestion - 1].number
           } 문제`}</div>
-          <div className="question-content">{
-            questions[currentQuestion - 1].contents?
-      <TypingTitle
-      content={questions[currentQuestion - 1].contents}
-      input={input}
-      />:<div>로딩중</div>
-
-          }
-             
+          <div className="question-content">
+            {questions[currentQuestion - 1].contents ? (
+              <TypingTitle
+                content={questions[currentQuestion - 1].contents}
+                input={input}
+              />
+            ) : (
+              <div>로딩중</div>
+            )}
             의 뜻은?
           </div>
         </div>
@@ -224,12 +257,12 @@ if (data.length!==0) {
           <button onClick={submitAnswer} className="btn-answer">
             ↵
           </button>
-          <button onClick={nextQuestion} className="btn-answer">
+          {/* <button onClick={nextQuestion} className="btn-answer">
             다음 문제
           </button>
           <button onClick={prevQuestion} className="btn-answer">
             이전 문제
-          </button>
+          </button> */}
         </div>
         {isAnswerCorrect === true && (
           <div className="answer-feedback">
@@ -238,8 +271,9 @@ if (data.length!==0) {
         )}
         {isAnswerCorrect === false && isAnswerCorrect !== null && (
           <div className="answer-feedback">틀렸습니다. 다시 시도하세요.</div>
-        )}
+        )} 
       </div>
     </body>
   );
 }
+
