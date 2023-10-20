@@ -1,16 +1,28 @@
-.mw {
-    width: calc(100% - 2rem);
+.headerContain {
+  max-width:calc(100vh - 10%);
+}
+
+.mwHeader {
+    /*width: calc(100% - 2rem);*/
     margin: 30;
     align-items: center;
     text-align: center;
-    position: flex;
     top : 8px;
   }
 
-  @media screen and (max-height: 800px) {
-    h1{
-      font-size: 10px;
-      display: flex;
-      flex-direction: column;
+  .projectName { /*프로젝트 이름*/
+    float:left;
+    background-color:green;
+    font-size:20px;
+    margin-left: 20px;
+  }
+
+  @media screen and (max-width:1800px)
+  { 
+    .headerContain {
+      flex-wrap: wrap;
+    }
+    .mw{
+      margin:15px 1;
     }
   }
