@@ -8,12 +8,17 @@ export default function End() {
     <body>
       <div class="end-container">
         <div class="testpapername">
-          <span>2023학년도 대학수학능력시험 문제지</span>
-          <br></br>
-          <span class="testtitlearea">상식 영역</span>
+          <div class="titlearea">
+          <div class="bigtesttitlearea">2023학년도 대학수학능력시험 문제지</div>
+          <div class="testtitlearea">상식 영역</div>
+          </div>
           <div class="namenumber">
+            <div class="studentname">
               성명 : <input type="text"></input>
-              수험번호 : <input type="text"></input>
+              </div>
+              <div class="studentnumber">
+              수험번호 : <input type="text" class="partnum2"></input>
+              </div>
           </div>
         </div>
         <div class="titleendboxcontainer">
