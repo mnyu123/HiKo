@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
 import "../css/second.css"; // second.css 파일을 가져옵니다.
 
@@ -21,7 +21,7 @@ export default function Second({ data }) {
   // progress: ProgressBar 진행률
   // setProgress: ProgressBar 진행률을 변경하는 함수
   // useState(0): progress의 초기값을 0으로 설정
-  const [progress, setProgress] = useState(0); // ProgressBar 진행률 상태
+  const [setProgress] = useState(0); // ProgressBar 진행률 상태
 
   // answer: 사용자의 답변
   // setAnswer: 답변을 변경하는 함수
@@ -147,7 +147,7 @@ export default function Second({ data }) {
     // 현재는 단순히 콘솔에 답변을 출력하는 예시입니다.
     // console.log("사용자의 답변:", answer);
 
-    const currentAnswer = questions[currentQuestion - 1].content;
+    // const currentAnswer = questions[currentQuestion - 1].content;
     const possibleAnswers = correctAnswers[currentQuestion - 1];
 
     if (possibleAnswers.includes(answer)) {
