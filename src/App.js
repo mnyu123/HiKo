@@ -8,12 +8,10 @@ import End from "./pages/End";
 import axios from "axios";
 
 // API URL
-const URL = "https://opendict.korean.go.kr/api/search?key=C2ED6617C9321CF93331CDDF29014A59&q=%20&req_type=json&type1=proverb&advanced=y&sort=popular&methob=start&num=10";
-
- 
+const URL =
+  "https://opendict.korean.go.kr/api/search?key=C2ED6617C9321CF93331CDDF29014A59&q=%20&req_type=json&type1=proverb&advanced=y&sort=popular&methob=start&num=10";
 
 function App() {
-
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -32,15 +30,13 @@ function App() {
 
       //  setData({ word, definition });
 
-      const DataList = items.map((list,i) => ({
-       
-        word : list.word,
-        definition : list.sense[0].definition
-       }));
+      const DataList = items.map((list, i) => ({
+        word: list.word,
+        definition: list.sense[0].definition,
+      }));
 
-       setData(DataList);
+      setData(DataList);
     } catch (e) {
-
       console.log(e);
       setError(e);
     }
@@ -48,13 +44,11 @@ function App() {
   };
 
   useEffect(() => {
-    if (data.length===0) {
+    if (data.length === 0) {
       fetchData();
-      
     }
 
     console.log(data);
-
   }, [data]);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
@@ -72,10 +66,10 @@ function App() {
       <Routes>
         <Route path="/" element={<First />} />
         <Route path="/end" element={<End />} />
-        <Route path="/second" element={<Second data={data}/>} />
+        <Route path="/second" element={<Second data={data} />} />
       </Routes>
     </>
-    // 
+    //
   );
 }
 
