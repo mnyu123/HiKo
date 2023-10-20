@@ -6,7 +6,7 @@ import First from "./pages/First";
 import Second from "./pages/Second";
 import End from "./pages/End";
 import axios from "axios";
-
+// 파일이름 변경 성공
 // API URL
 const URL =
   "https://opendict.korean.go.kr/api/search?key=C2ED6617C9321CF93331CDDF29014A59&q=%20&req_type=json&type1=proverb&advanced=y&sort=popular&methob=start&num=10";
