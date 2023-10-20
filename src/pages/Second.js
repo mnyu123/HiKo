@@ -7,8 +7,9 @@ import CustomProgressBar from "../common/Progressbar";
 import Timer from "../common/timer";
 
 import TypingTitle from "./TypingTitle";
+import { useNavigate } from "react-router-dom";
 
-export default function Second({ data}) {
+export default function Second({data}) {
   console.log("로딩테스트");
 
   // 인수값이 넘어왔는지 콘솔로 테스트
@@ -34,21 +35,22 @@ export default function Second({ data}) {
 
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
 
-  const [correctAnswers] = useState([
-    ["바람", "바람의 뜻"],
-    ["시나브로", "시나브로의 뜻"],
-    ["나무", "나무의 뜻"],
-  ]);
+  const [Score, setScore] = useState(0);
+  const Navigate = useNavigate();
+
+
+  // const [correctAnswers] = useState([]);
 
   const clearInput = () => {
     setInput("");
     setAnswer("");
     setIsAnswerCorrect(null);
   };
+  console.log("스코어",Score);
 
   useEffect(() => {
     // console.log("처음 timeleft 세팅된 시간", timeLeft);
-  }, [timeLeft]); // timeLeft 값이 변경될 때만 실행
+  }, [timeLeft,Score]); // timeLeft 값이 변경될 때만 실행
   // API를 추가하고 나서는 여기가 변수처럼 변해야 할듯
   // questions: 문제 목록
   
@@ -73,7 +75,6 @@ if (data.length!==0) {
       };
     }  
 }
-
     
   // 만약 문제를 다 풀거나 1번문제 이전으로 돌아가려고 하면
   const showAlertMessage1 = () => {
@@ -134,6 +135,10 @@ if (data.length!==0) {
     setAnswer(e.target.value);
   };
 
+  if (data&&data.length>0) {
+    console.log("currque",data[currentQuestion-1].word);
+    
+  }
   // 답변을 전송하는 함수
   const submitAnswer = () => {
     // 여기에서 입력한 답변을 처리하거나 확인할 수 있습니다.
@@ -141,21 +146,35 @@ if (data.length!==0) {
     // 현재는 단순히 콘솔에 답변을 출력하는 예시입니다.
     // console.log("사용자의 답변:", answer);
 
-    const currentAnswer = questions[currentQuestion - 1].content;
-    const possibleAnswers = correctAnswers[currentQuestion - 1];
+    // const currentAnswer = data[currentQuestion - 1].word;
+    
+console.log("input test",input===data[currentQuestion-1].word);
+// 조건비교 성공시 nextque score +1
+console.log("cuQ",currentQuestion);
+if(input=== data[currentQuestion-1].word){
+  setScore((state)=>{
 
-    if (possibleAnswers.includes(answer)) {
-      setIsAnswerCorrect(true);
-    } else {
-      setIsAnswerCorrect(false);
+    const num =state+=1
+    if (data.length === currentQuestion) {
+
+      Navigate("/end", {state : {score : state}});
     }
+return num;
+  });
+  
+  
+  nextQuestion();
+
+  
 
     // 페이지가 다시 로딩되지 않도록 아래 두 줄을 추가
     setProgress(100);
     resetTimer();
+}
 
     // 만약 모든 문제를 푸는 동작을 추가하고자 한다면 여기에서 처리할 수 있습니다.
   };
+  
   const handleTimeExpired = () => {
     // 현재 문제 번호가 문제 목록의 마지막이 아니면 다음 문제로 넘어감
     if (currentQuestion < questions.length) {
@@ -224,12 +243,12 @@ if (data.length!==0) {
           <button onClick={submitAnswer} className="btn-answer">
             ↵
           </button>
-          <button onClick={nextQuestion} className="btn-answer">
+          {/* <button onClick={nextQuestion} className="btn-answer">
             다음 문제
           </button>
           <button onClick={prevQuestion} className="btn-answer">
             이전 문제
-          </button>
+          </button> */}
         </div>
         {isAnswerCorrect === true && (
           <div className="answer-feedback">
@@ -238,8 +257,9 @@ if (data.length!==0) {
         )}
         {isAnswerCorrect === false && isAnswerCorrect !== null && (
           <div className="answer-feedback">틀렸습니다. 다시 시도하세요.</div>
-        )}
+        )} 
       </div>
     </body>
   );
 }
+
