@@ -8,9 +8,8 @@ export default function Header() {
   return (
     <div className="headerContain">
       <header className="mwHeader">
-        
         <h1>
-        <span className="projectName">Hiko</span>히코 <Popup/>
+        <span className="projectName">Hiko</span> 히코 <Popup/>
         </h1>
 
         <nav>
