@@ -9,8 +9,8 @@ export default function End() {
       <div class="end-container">
         <div class="testpapername">
           <div class="titlearea">
-          <div class="bigtesttitlearea">2023학년도 대학수학능력시험 문제지</div>
-          <div class="testtitlearea">상식 영역</div>
+          <div class="bigtesttitlearea">2024학년도 대학수학능력시험 문제지</div>
+          <div class="testtitlearea">속담 영역</div>
           </div>
           <div class="namenumber">
             <div class="studentname">
@@ -25,7 +25,7 @@ export default function End() {
           <br></br>
         </div>
         <br></br>
-        <div>
+        <div class="seconddialog">
           <div class="result-message">게임이 종료되었습니다.</div>
           <div class="score">
             당신이 맞춘 개수는 <span id="score">?/10</span> 입니다.

@@ -126,7 +126,7 @@ input {
     margin-top: 50px;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
 
     .end-container {
         padding: 100px;
@@ -134,11 +134,11 @@ input {
     }
 
     .bigtesttitlearea {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     .testtitlearea {
-        font-size: 30px;
+        font-size: 50px;
         font-weight: bold;
     }
 
@@ -154,11 +154,12 @@ input {
 
     .score {
         font-size: 30px;
-
+        display: flex;
+        align-items: center;
     }
 
     .endpage-button {
-        display: inline-block;
+        display: block;
         padding: 10px 20px;
         background-color: #b6b6b6; /* 버튼 배경색 */
         color: #3e3e3e; /* 버튼 텍스트 색상 */
@@ -169,5 +170,11 @@ input {
         cursor: pointer;
         transition: background-color 0.3s;
         margin: 20px; /* 호버 효과 */
+      }
+
+      .seconddialog {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
       }
 }
