@@ -52,6 +52,9 @@
     margin-top:10px;
     padding:0;
   }
+  .first-nav Header {
+    width:100vh;
+  }
   .first-div {
     margin:0;
   }
