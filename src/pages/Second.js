@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "../common/Header";
 import "../css/second.css"; // second.css 파일을 가져옵니다.
 
-import CustomProgressBar from "../common/Progressbar";
 
 import Timer from "../common/timer";
 
@@ -61,7 +60,7 @@ export default function Second({ data }) {
   //   { number: "세 번째", content: data.definition },
   // ];
   const questions = [
-    { number: "첫번쨰" },
+    { number: "첫번째" },
     { number: "두번째" },
     { number: "세번째" },
     { number: "네번째" },
@@ -76,7 +75,7 @@ export default function Second({ data }) {
   if (data.length !== 0) {
     for (let i = 0; i < data.length; i++) {
       questions[i] = {
-        number: i + 1 + "번째",
+        number: questions[i].number,
         contents: data[i].definition,
       };
     }
