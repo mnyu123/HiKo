@@ -129,13 +129,13 @@ input {
 .studentname {
     display: flex;
         align-items: center;
-        margin-right: 100px;
+        margin-right: 50px;
 }
 
 .studentnumber {
     display: flex;
         align-items: center;
-        margin-right: 100px;
+        margin-right: 10px;
 }
 
 @media screen and (max-width: 1000px){

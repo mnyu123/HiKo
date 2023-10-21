@@ -4,29 +4,17 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function End() {
 
-  const userrank = [
-    { number: "MZ세대" },
-    { number: "국어선생님" },
-    { number: "조선시대 선비" },
-  ];
 
-  const lol = userrank[2].number
+
 
   const location = useLocation();
 
   console.log("리액트 컴포넌트가 잘 연결되었습니다.",location.state);
 
-  if(location.state <= 3) {
-    const mz = userrank[0].number
-    console.log("테스트1",mz);
-  } else if(location.state >= 7)
-  {
-    const teacherlevel = userrank[1].number
-    console.log("와..국어능력보소..",teacherlevel);
-  } else {
-    console.log("누구세요",lol);
-  }
 
+
+
+// console.log("테스트1",rank)
   return (
     <body>
       <div class="end-container">
@@ -37,7 +25,7 @@ export default function End() {
           </div>
           <div class="namenumber">
               <div class="studentname">
-              등급: <div class="text">{lol}</div>
+              등급: {location.state.score <= 3?"MZ세대":location.state.score >= 7?"국어선생님":"조선시대선비"}
               </div>
               <div class="studentnumber">
               수험번호 : <input type="text" class="partnum2"></input>
