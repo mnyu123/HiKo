@@ -98,7 +98,7 @@ export default function Second({data}) {
     alert("이것이 마지막 문제입니다!");
   };
 
-  const initialTime = 100;
+  const initialTime = 300;
 
   const resetTimer = () => {
     setTimeLeft(0);
