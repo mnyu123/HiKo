@@ -65,7 +65,7 @@ export default function Second({data}) {
   //   { number: "세 번째", content: data.definition },
   // ];
   const questions = [
-    { number: "첫번쨰" },
+    { number: "첫번째" },
     { number: "두번째" },
     { number: "세번째" },
     { number: "네번째" },
@@ -221,7 +221,7 @@ return num;
   }
 
   return (
-    <body>
+    <div>
       <Header />
 
       <div className="container">
@@ -284,7 +284,7 @@ return num;
           <div className="answer-feedback">틀렸습니다. 다시 시도하세요.</div>
         )}  */}
       </div>
-    </body>
+    </div>
   );
 }
 
