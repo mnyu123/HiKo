@@ -9,12 +9,12 @@ export default function Header() {
     <div className="headerContain">
       <header className="mwHeader">
         <h1>
-        <span className="projectName">Hiko</span> 히코 <Popup/>
+        <span className="projectName">Hiko</span> 속담의 천재 <Popup/>
         </h1>
 
-        <nav>
+        {/* <nav>
           <Link to="/end">마지막페이지</Link>
-        </nav>
+        </nav> */}
       </header>
     </div>
   );

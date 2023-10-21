@@ -34,4 +34,6 @@ const Timer = ({ initialTime, onTimeExpired , resetTimer}) => {
   );
 };
 
+//Navigate("/end", {state : {score : 0}});
+
 export default Timer;
