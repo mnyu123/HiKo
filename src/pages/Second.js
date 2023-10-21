@@ -95,10 +95,10 @@ export default function Second({data}) {
 
   // 마지막 문제를 만나고 정답을 체크했을때
   const showAlertMessage2 = () => {
-    alert("이것이 마지막 문제입니다!");
+    alert("이것이 마지막 문제입니다! 어려우셨나요?");
   };
 
-  const initialTime = 100;
+  const initialTime = 300;
 
   const resetTimer = () => {
     setTimeLeft(0);
@@ -120,7 +120,6 @@ export default function Second({data}) {
     } else {
       // 마지막 문제입니다 출력 후 다음 컴포넌트로 이동 예정
       showAlertMessage2();
-      
     }
   };
 
@@ -165,7 +164,7 @@ export default function Second({data}) {
 console.log("input test",input===data[currentQuestion-1].word);
 // 조건비교 성공시 nextque score +1
 console.log("cuQ",currentQuestion);
-if(input === data[currentQuestion-1].word){ //정답 오답 조건
+if(input=== data[currentQuestion-1].word){ //정답 오답 조건
   setScore((state)=>{
 
 
@@ -173,7 +172,6 @@ if(input === data[currentQuestion-1].word){ //정답 오답 조건
     if (data.length === currentQuestion) {
 
       Navigate("/end", {state : {score : state}});
-      
     }
 return num;
   });
@@ -198,27 +196,18 @@ return num;
       setProgress(0); // ProgressBar 초기화
       setAnswer("");
       setIsAnswerCorrect(false);
-      Navigate("/end", {state : {score : 0}});
+
       resetTimer();
     } else {
       if (currentQuestion === questions.length) {
         alert("마지막 문제입니다.");
-      } //else if (currentQuestion === questions.length - 1) {
-      //   alert("이것이 세 번째 문제입니다: '" + questions[2].content + "'");
-      // } else {
-      //   alert("제발 동작해 주세요 다음문제로 가라고 마지막문제 말고!!");
-      // }
+      } else if (currentQuestion === questions.length - 1) {
+        alert("이것이 세 번째 문제입니다: '" + questions[2].content + "'");
+      } else {
+        alert("제발 동작해 주세요 다음문제로 가라고 마지막문제 말고!!");
+      }
     }
   };
-
-  const passQuestion =()=>{
-    if (data.length === currentQuestion) {
-
-      Navigate("/end", {state : {score : Score}});
-      
-    }
-    nextQuestion();
-  }
 
   return (
     <div>
@@ -268,21 +257,21 @@ return num;
           <button onClick={submitAnswer} className="btn-answer">
             ↵
           </button>
-          <button onClick={passQuestion} className="btn-answer">
-            포기
+          {/* <button onClick={nextQuestion} className="btn-answer">
+            다음 문제
           </button>
-           {/*<button onClick={prevQuestion} className="btn-answer">
+          <button onClick={prevQuestion} className="btn-answer">
             이전 문제
           </button> */}
         </div>
-        {/* {input===data[currentQuestion-1].word && (
+        {isAnswerCorrect === true && (
           <div className="answer-feedback">
             정답입니다! 다음 문제로 진행하세요.
           </div>
         )}
-        {input!==data[currentQuestion-1].word && input === null && (
+        {isAnswerCorrect === false && isAnswerCorrect !== null && (
           <div className="answer-feedback">틀렸습니다. 다시 시도하세요.</div>
-        )}  */}
+        )} 
       </div>
     </div>
   );
