@@ -126,6 +126,18 @@ input {
     margin-top: 50px;
 }
 
+.studentname {
+    display: flex;
+        align-items: center;
+        margin-right: 100px;
+}
+
+.studentnumber {
+    display: flex;
+        align-items: center;
+        margin-right: 100px;
+}
+
 @media screen and (max-width: 1000px){
 
     .end-container {

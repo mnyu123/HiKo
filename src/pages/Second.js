@@ -95,7 +95,7 @@ export default function Second({data}) {
 
   // 마지막 문제를 만나고 정답을 체크했을때
   const showAlertMessage2 = () => {
-    alert("이것이 마지막 문제입니다!");
+    alert("이것이 마지막 문제입니다! 어려우셨나요?");
   };
 
   const initialTime = 300;

@@ -17,10 +17,10 @@ export default function Button() {
   return (
     <div class="level-buttons">
           <button class="level-button" onClick={goSecond}>
-            레벨 1
+            순한맛 난이도
           </button>
           <button class="level-button" onClick={goEnd}>
-            레벨 2
+            매운맛 난이도
           </button>
     </div>
   );
