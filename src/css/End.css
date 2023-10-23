@@ -1,20 +1,192 @@
+@font-face {
+    font-family: "SDGothic";
+    src: url("/src/font/applesdgothicneo.ttf");
+    font-weight: normal;
+}
+
+.endpage-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b6b6b6; /* 버튼 배경색 */
+    color: #3e3e3e; /* 버튼 텍스트 색상 */
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px; /* 둥근 모서리 */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 20px; /* 호버 효과 */
+  }
+
+  .bigtesttitlearea {
+    white-space: nowrap;
+  }
+  
+  .button:hover {
+    background-color: #000000; /* 호버 시 배경색 변경 */
+    color: #7fcd71;
+  }
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
     font-family: 'Yeon Sung', cursive;
+}
+
+.titlearea{
+    display: flex;
+    flex-direction: column;
+}
+
+.testpapername {
+    text-align: center;
+    font-size: 50px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+    font-family: SDGothic;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.testtitlearea {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+    color: #333;
+    background-color: transparent;
+    font-size: 16px;
+    padding-left: 15px; /*입력칸 앞에 공백*/
+    border-radius: 5px;
+    border: 1px solid #333;
+    margin: 15px;
 }
 
 .result-message {
     text-align: center;
-    font-size: 24px;
+    font-size: 44px;
     margin-bottom: 20px;
+    justify-content: center;
 }
 
 .score {
-    font-size: 36px;
+    font-size: 60px;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.end-container {
+    background-color: #4caf50;
+    border-radius: 5px;
+    background-image: url("/public/cement-texture.jpg");
+    background-size: auto 100%; /* 세로 모양의 texture 를 가로로 표시 */
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); /* 그림자 속성 추가 */
+    padding: 300px 200px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 50px);
+}
+
+.titleunderline {
+    border: none; /* 기본 선 제거 */
+    border-top: 2px solid #000000;
+    margin: 20px 0;
+    width: 80%;
+}
+
+.toptitle {
+    text-align: center;
+}
+
+.namenumber {
+    font-size: 25px;
+    font-family: SDGothic;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+}
+
+.titleendboxcontainer {
+    background-color: #a5a5a5;
+    height: 2px; /* 막대의 높이를 1px로 설정 */
+    width: 100%; /* 가로로 가득 차게 설정 */
+}
+
+.restartbutton {
+    margin-top: 50px;
+}
+
+.studentname {
+    display: flex;
+        align-items: center;
+        margin-right: 50px;
+}
+
+.studentnumber {
+    display: flex;
+        align-items: center;
+        margin-right: 10px;
+}
+
+@media screen and (max-width: 1000px){
+
+    .end-container {
+        padding: 100px;
+        margin: 30px;
+    }
+
+    .bigtesttitlearea {
+        font-size: 30px;
+    }
+
+    .testtitlearea {
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .namenumber {
+        font-size: 20px;
+        flex-direction: column;
+    }
+
+    .result-message {
+        font-size: 20px;
+        width: 200px;
+    }
+
+    .score {
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .endpage-button {
+        display: block;
+        padding: 10px 20px;
+        background-color: #b6b6b6; /* 버튼 배경색 */
+        color: #3e3e3e; /* 버튼 텍스트 색상 */
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* 둥근 모서리 */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 20px; /* 호버 효과 */
+      }
+
+      .seconddialog {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
 }

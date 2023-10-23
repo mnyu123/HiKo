@@ -1,9 +1,44 @@
-.mw {
-    max-width: 1200px;
-    width: calc(100% - 2rem);
+.headerContain {
+  max-width:100%;
+}
+
+.mwHeader {
     margin: 30;
     align-items: center;
     text-align: center;
-    position: absolute;
-    top : 8px;
+    padding-top : 8px;
+  }
+
+  .projectName { /*프로젝트 이름*/
+    float:left;
+    background-color:green;
+    font-size:20px;
+    margin-left: 20px;
+  }
+
+  @media screen and (max-width:1600px)
+  { 
+    .headerContain {
+      flex-wrap: wrap;
+      width:auto;
+    }
+    .mwHeader {
+      margin:0;
+      max-width:100%;
+      width:auto;
+    }
+    .projectName{
+      margin:0;
+      margin-left: 20px;
+      
+    }
+    Popup {
+      margin:0;
+    }
+    nav {
+      text-align: center;
+    }
+    nav a {
+      align-items: center;
+    }
   }

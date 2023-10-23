@@ -1,0 +1,61 @@
+.container{
+  max-width: 1800px; /* 페이지의 최대 너비 설정 */
+  width:80%;
+}
+
+.mw {
+    width: auto; /* 페이지의 최대 너비 설정 */
+    margin: 0; /* 가운데 정렬 */
+    /* 페이지 컨텐츠와 경계 사이의 간격 조정 */
+    padding-top:20px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  /* 네비게이션 스타일링 */
+  .first-nav {
+    border-radius: 5px;
+    background-image: url("/public/cement-texture.jpg");
+    background-size: 100vh auto;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 20px auto;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 150px);
+  }
+  
+  /* Header 컴포넌트 스타일링 */
+  .first-nav Header {
+    /* Header 컴포넌트와 Button 컴포넌트 사이의 간격 설정 */
+    width: 100vh;
+
+  }
+  
+  /* Button 컴포넌트 스타일링 */
+  .first-div Button {
+    /* Button 컴포넌트에 대한 추가 스타일링 */
+    width: 100vh;
+  }
+
+@media screen and (max-width: 1800px)
+{
+  .container {
+    flex-wrap: wrap; /* 화면 크기가 작아질 때 요소가 줄 바꿈됨 */
+  }
+  .mw{
+    margin:5px 1;
+  }
+  .first-nav {
+    margin-top:10px;
+    padding:0;
+  }
+  .first-nav Header {
+    width:100vh;
+  }
+  .first-div {
+    margin:0;
+  }
+}
