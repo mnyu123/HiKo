@@ -74,3 +74,4 @@ function App() {
 }
 
 export default App;
+// 파일 이름 수정함.10월24일 기준
